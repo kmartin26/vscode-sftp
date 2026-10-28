@@ -1,4 +1,5 @@
 ## 1.16.5 - 2026-10-28
+* Fork now maintained at https://github.com/kmartin26/vscode-sftp (displayName `SFTP Sync`).
 * Fix crash on recent VS Code/Node versions caused by removal of `util.isDate`: upgrade `ssh2` to v1.17.
 
 ## 1.16.4 - 2026-10-27
