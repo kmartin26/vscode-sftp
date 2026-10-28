@@ -11,8 +11,11 @@ function shouldUseAgent(config) {
   return typeof config.agent === 'string' && config.agent.length > 0;
 }
 
-function shouldUseKey(config) {
-  return typeof config.privateKeyPath === 'string' && config.privateKeyPath.length > 0;
+// localPrivateKeyPath takes precedence over privateKeyPath
+function getKeyPath(config): string | undefined {
+  return [config.localPrivateKeyPath, config.privateKeyPath].find(
+    keyPath => typeof keyPath === 'string' && keyPath.length > 0
+  );
 }
 
 function adaptPath(filepath) {
@@ -81,10 +84,11 @@ export default checkCommand({
     };
     const terminal = vscode.window.createTerminal(remoteConfig.name);
     let sshCommand;
+    const keyPath = getKeyPath(remoteConfig);
     if (shouldUseAgent(remoteConfig)) {
       sshCommand = getSshCommand(sshConfig);
-    } else if (shouldUseKey(remoteConfig)) {
-      sshCommand = getSshCommand(sshConfig, `-i "${adaptPath(remoteConfig.privateKeyPath)}"`);
+    } else if (keyPath) {
+      sshCommand = getSshCommand(sshConfig, `-i "${adaptPath(keyPath)}"`);
     } else {
       sshCommand = getSshCommand(sshConfig);
     }

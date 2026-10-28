@@ -188,9 +188,13 @@ local -> hop -> target
     "host": "targetHost",
     "username": "targetUsername",
     "privateKeyPath": "/Users/hopUser/.ssh/id_rsa", // <-- The key file is assumed on the hop.
+    // or
+    "localPrivateKeyPath": "/Users/localUser/.ssh/target_rsa", // <-- The key file is on the local machine.
   }
 }
 ```
+
+_Note：_ Use `localPrivateKeyPath` instead of `privateKeyPath` to read the key file from the local machine. It works in every hop entry and takes precedence over `privateKeyPath`.
 
 #### Multiple Hop
 local -> hopa -> hopb -> target
@@ -217,6 +221,8 @@ local -> hopa -> hopb -> target
       "host": "targetHost",
       "username": "targetUsername",
       "privateKeyPath": "/Users/hopbUser/.ssh/id_rsa", // <-- The key file is assumed on the hopb.
+      // or
+      "localPrivateKeyPath": "/Users/localUser/.ssh/target_rsa", // <-- The key file is on the local machine.
     }
   ]
 }

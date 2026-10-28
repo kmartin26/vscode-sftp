@@ -186,6 +186,10 @@
         "type": "string",
         "description": "Absolute path to user private key."
       },
+      "localPrivateKeyPath": {
+        "type": "string",
+        "description": "Path to a private key on the local machine. Useful in a hop, where privateKeyPath is read on the previous hop. Takes precedence over privateKeyPath."
+      },
       "passphrase": {
         "oneOf": [
           {

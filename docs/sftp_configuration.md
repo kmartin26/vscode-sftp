@@ -16,7 +16,8 @@ It'd get more stability because some client/server have some sort of configured/
 ```
 
 ### privateKeyPath
-Absolute path to user private key.
+Absolute path to user private key. <br>
+In a `hop` entry, the key file is read on the previous hop; see `localPrivateKeyPath`.
 
 | Key | Value |
 | --- | --- |
@@ -25,6 +26,25 @@ Absolute path to user private key.
 ```json
 {
   "privateKeyPath": "/.ssh/key.pem"
+}
+```
+
+### localPrivateKeyPath
+Path to a private key on the local machine. <br>
+In a `hop` entry, `privateKeyPath` is read on the previous hop. Use `localPrivateKeyPath` to read the key file from the local machine instead. <br>
+Takes precedence over `privateKeyPath` when both are set.
+
+| Key | Value |
+| --- | --- |
+| *localPrivateKeyPath* | *string* |
+
+```json
+{
+  "hop": {
+    "host": "targetHost",
+    "username": "targetUsername",
+    "localPrivateKeyPath": "~/.ssh/target_rsa"
+  }
 }
 ```
 

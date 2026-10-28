@@ -11,6 +11,7 @@ export interface ConnectOption {
 
   // ssh-only
   privateKeyPath?: string;
+  localPrivateKeyPath?: string;
   privateKey?: string;
   passphrase?: string | boolean;
   interactiveAuth?: boolean | string[];

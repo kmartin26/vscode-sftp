@@ -25,11 +25,26 @@ export default class SSHClient extends RemoteClient {
       // or interactiveAuth : array of phrases
       (Array.isArray(connectOption.interactiveAuth) && !!connectOption.interactiveAuth.length) ||
       // or key defined
-      ['password', 'agent', 'privateKeyPath'].some(
+      ['password', 'agent', 'privateKeyPath', 'localPrivateKeyPath'].some(
         // tslint:disable-next-line triple-equals
         key => connectOption[key] != undefined
       )
     );
+  }
+
+  // localPrivateKeyPath is always read on the local machine,
+  // privateKeyPath is read on the previous hop (or local when there is none).
+  async _loadPrivateKey(
+    option: ConnectOption,
+    fs: FileSystem | RemoteFileSystem
+  ): Promise<void> {
+    if (option.localPrivateKeyPath) {
+      const buffer = await localFs.readFile(option.localPrivateKeyPath);
+      option.privateKey = buffer.toString();
+    } else if (option.privateKeyPath) {
+      const buffer = await fs.readFile(option.privateKeyPath);
+      option.privateKey = buffer.toString();
+    }
   }
 
   async _doConnect(
@@ -64,10 +79,7 @@ export default class SSHClient extends RemoteClient {
           });
         }
 
-        if (curOpt.privateKeyPath) {
-          const buffer = await fs.readFile(curOpt.privateKeyPath);
-          curOpt.privateKey = buffer.toString();
-        }
+        await this._loadPrivateKey(curOpt, fs);
 
         const client = new SSHClient(curOpt);
         this.hoppingClients.push(client);
@@ -85,10 +97,7 @@ export default class SSHClient extends RemoteClient {
       });
     }
 
-    if (lastOption.privateKeyPath) {
-      const buffer = await fs.readFile(lastOption.privateKeyPath);
-      lastOption.privateKey = buffer.toString();
-    }
+    await this._loadPrivateKey(lastOption, fs);
 
     await this._connectSSHClient(this._client, { ...lastOption, sock }, config);
     this.sftp = await this._getSftp(this._client);

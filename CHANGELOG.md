@@ -1,3 +1,6 @@
+## Unreleased
+* Add `localPrivateKeyPath` option to read a hop's private key from the local machine instead of the previous hop ([#6](https://github.com/kmartin26/vscode-sftp/issues/6)).
+
 ## 1.16.5 - 2026-10-28
 * Fork now maintained at https://github.com/kmartin26/vscode-sftp (displayName `SFTP Sync`).
 * Fix crash on recent VS Code/Node versions caused by removal of `util.isDate`: upgrade `ssh2` to v1.17.
