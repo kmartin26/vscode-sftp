@@ -1,3 +1,6 @@
+## 1.16.5 - 2026-10-28
+* Fix crash on recent VS Code/Node versions caused by removal of `util.isDate`: upgrade `ssh2` to v1.17.
+
 ## 1.16.4 - 2026-10-27
 * Add download icons (file & folder) inline in the remote explorer treeview (Pull request [#381](https://github.com/Natizyskunk/vscode-sftp/pull/381) from @satiromarra vscode-sftp:dev-download-icons).
 * Add `Refresh Active Remote File` command and editor title button to refresh the currently focused remote file (Pull request [#408](https://github.com/Natizyskunk/vscode-sftp/pull/408) from @atariq11700 vscode-sftp:develop).
