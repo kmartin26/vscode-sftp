@@ -1,12 +1,14 @@
 # SFTP Sync for VS Code
 
-Community-maintained fork of [Natizyskunk's SFTP extension](https://github.com/Natizyskunk/vscode-sftp), itself forked from [liximomo's SFTP plugin](https://github.com/liximomo/vscode-sftp). The upstream project is no longer actively maintained; this fork keeps the extension working on current VS Code and Node versions.
+Actively maintained fork of [Natizyskunk's SFTP extension](https://github.com/Natizyskunk/vscode-sftp), itself forked from [liximomo's SFTP plugin](https://github.com/liximomo/vscode-sftp). This fork keeps the extension working on current VS Code and Node versions and continues to evolve it.
+
+Upstream's last feature release was 1.16.3 (June 2023). Version 1.16.4 (October 2026) merged long-pending pull requests but still crashes on recent VS Code/Node versions (`util.isDate` removal in `ssh2`). This fork fixes it starting with 1.16.5.
 
 - VSIX release : https://github.com/kmartin26/vscode-sftp/releases/
 
 Configuration (`.vscode/sftp.json`) and commands are unchanged, so existing projects work as-is.
 
-Issues and pull requests are welcome: https://github.com/kmartin26/vscode-sftp/issues
+Bug reports, feature requests and pull requests are welcome: https://github.com/kmartin26/vscode-sftp/issues. Every report is read and handled as fast as possible.
 
 ---
 
