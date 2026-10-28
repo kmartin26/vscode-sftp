@@ -68,6 +68,7 @@ interface SftpOption {
   // sftp
   agent?: string;
   privateKeyPath?: string;
+  localPrivateKeyPath?: string;
   passphrase: string | true;
   interactiveAuth: boolean | string[];
   algorithms: any;
@@ -323,6 +324,26 @@ function getCompleteConfig(
       mergedConfig.privateKeyPath
     );
   }
+
+  const hops: SftpOption[] = mergedConfig.hop
+    ? ([] as SftpOption[]).concat(mergedConfig.hop)
+    : [];
+  [mergedConfig, ...hops].forEach(option => {
+    if (!option.localPrivateKeyPath) {
+      return;
+    }
+
+    if (option.privateKeyPath) {
+      logger.warn(
+        'Config Option Conflicted. You are specifing "privateKeyPath" and "localPrivateKeyPath" at the same time, ' +
+          'the former will be ignored.'
+      );
+    }
+    option.localPrivateKeyPath = resolvePath(
+      workspace,
+      option.localPrivateKeyPath
+    );
+  });
 
   if (mergedConfig.ignoreFile) {
     mergedConfig.ignoreFile = resolvePath(workspace, mergedConfig.ignoreFile);

@@ -22,6 +22,7 @@ const configScheme = {
 
   agent: nullable(Joi.string()),
   privateKeyPath: nullable(Joi.string()),
+  localPrivateKeyPath: nullable(Joi.string()),
   passphrase: nullable(Joi.string().allow(true)),
   interactiveAuth: Joi.alternatives([
     Joi.boolean(),
@@ -99,6 +100,7 @@ const defaultConfig = {
   // sftp
   // agent,
   // privateKeyPath,
+  // localPrivateKeyPath,
   // passphrase,
   interactiveAuth: false,
   // algorithms,
