@@ -4,3 +4,12 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    ignore:
+      # Must not be newer than engines.vscode, or vsce refuses to package.
+      - dependency-name: "@types/vscode"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      # Newer majors are ESM-only and need a Node version the extension host does not ship.
+      - dependency-name: "p-queue"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "joi"
+        update-types: ["version-update:semver-major"]
