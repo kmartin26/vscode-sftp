@@ -3,8 +3,8 @@
   "displayName": "SFTP Sync",
   "description": "SFTP/FTP sync (maintained fork of Natizyskunk.sftp)",
   "version": "1.16.5",
-  "publisher": "kmartin",
-  "author": "Kévin Martin (https://github.com/kmartin26)",
+  "publisher": "kmartin26",
+  "author": "Kévin Martin <hello@kmartin.io> (https://github.com/kmartin26)",
   "contributors": [
     "liximomo (https://github.com/liximomo)",
     "Natizyskunk (https://github.com/Natizyskunk)"
