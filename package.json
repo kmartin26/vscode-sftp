@@ -1,20 +1,24 @@
 {
   "name": "sftp",
-  "displayName": "SFTP",
-  "description": "SFTP/FTP sync",
+  "displayName": "SFTP Sync",
+  "description": "SFTP/FTP sync (maintained fork of Natizyskunk.sftp)",
   "version": "1.16.5",
   "publisher": "kmartin",
-  "author": "Natizyskunk (https://github.com/Natizyskunk)",
+  "author": "Kévin Martin (https://github.com/kmartin26)",
+  "contributors": [
+    "liximomo (https://github.com/liximomo)",
+    "Natizyskunk (https://github.com/Natizyskunk)"
+  ],
   "engines": {
     "vscode": "^1.64.2"
   },
   "bugs": {
-    "url": "https://github.com/Natizyskunk/vscode-sftp/issues"
+    "url": "https://github.com/kmartin26/vscode-sftp/issues"
   },
-  "homepage": "https://github.com/Natizyskunk/vscode-sftp/blob/master/README.md",
+  "homepage": "https://github.com/kmartin26/vscode-sftp#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Natizyskunk/vscode-sftp.git"
+    "url": "https://github.com/kmartin26/vscode-sftp.git"
   },
   "license": "MIT",
   "categories": [
@@ -701,7 +705,7 @@
     "dev": "webpack --mode development --watch",
     "test": "jest",
     "package": "vsce package",
-    "pub:debug": "rm -rf _debug && mkdir _debug && vsce package --out _debug/sftp-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:Natizyskunk/vscode-sftp.git debug-pacakge --force"
+    "pub:debug": "rm -rf _debug && mkdir _debug && vsce package --out _debug/sftp-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:kmartin26/vscode-sftp.git debug-pacakge --force"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

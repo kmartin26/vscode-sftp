@@ -1,23 +1,12 @@
-# sftp sync extension for VS Code
+# SFTP Sync for VS Code
 
-New maintained and updated version by [@Natizyskunk](https://github.com/Natizyskunk/) 😀 <!-- and [@satiromarra](https://github.com/satiromarra) --> <br>
-(Forked from the no longer maintained [liximomo's SFTP plugin](https://github.com/liximomo/vscode-sftp.git))
+Community-maintained fork of [Natizyskunk's SFTP extension](https://github.com/Natizyskunk/vscode-sftp), itself forked from [liximomo's SFTP plugin](https://github.com/liximomo/vscode-sftp). The upstream project is no longer actively maintained; this fork keeps the extension working on current VS Code and Node versions.
 
-- VS Code marketplace : https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp <br>
-- VSIX release : https://github.com/Natizyskunk/vscode-sftp/releases/
+- VSIX release : https://github.com/kmartin26/vscode-sftp/releases/
 
-✳ I would be more than happy to have you participate in one way or another to this project. You can do so by simply following the [templates](https://github.com/Natizyskunk/vscode-sftp/issues/new/choose) when you open a new issue or a new pull request.
+Configuration (`.vscode/sftp.json`) and commands are unchanged, so existing projects work as-is.
 
-## ℹ INFOS - 2025/03/13
-I've tried to keep this extension up-to-date as much as I can and added a lot of new relevant features. Saddly, for the last year and a half I wasn't really able to work on the project because of personal reasons and I'm really not sure if and when I'll be able to get more time to work on it again. So for now consider the [v1.16.4](https://github.com/Natizyskunk/vscode-sftp/releases/tag/v1.16.4) as the latest official stable release available.
-
-## ℹ INFOS - 2023/06/23
-This is the main repository for the SFTP extension since [@liximomo](https://github.com/liximomo) has set his own to deprecated in favor of this one in the VSCode marketplace.
-There are also other forks that are available. Feel free to try them.
-
-A lot of work as been brought to fix bugs, add new features and more than 50 updates have been released with a lot of improvements and stability fixes for almost two years now. 😎
-
-I've been working hard to fix a lot of things and I've updated more than 50 new releases with a lot of improvements and stability fixes and I've brought new features for almost three years now. 
+Issues and pull requests are welcome: https://github.com/kmartin26/vscode-sftp/issues
 
 ---
 
@@ -33,34 +22,27 @@ VSCode-SFTP enables you to add, edit or delete files within a local directory an
   - Multiple configurations
   - Switchable profiles
   - Temp File support
-- [Commands](https://github.com/Natizyskunk/vscode-sftp/wiki/Commands)
+- [Commands](docs/commands.md)
 - [Debug](#debug)
 - [FAQ](#FAQ)
 
 ## Installation
 
-### Method 1 (Recommended : Auto update)
-1. Select Extensions (Ctrl + Shift + X).
-2. Uninstall current sftp extension from @liximomo.
-3. Install new extension directly from VS Code Marketplace : https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp.
-4. Voilà!
-
-### Method 2 (Manual update)
-To install just follow these steps from within VSCode:
-1. Select Extensions (Ctrl + Shift + X).
-2. Uninstall current sftp extension from @liximomo.
-3. Open "More Action" menu(ellipsis on the top) and click "Install from VSIX…".
-4. Locate VSIX file and select.
-5. Reload VSCode.
-6. Voilà!
+### From VSIX
+1. Download the latest `.vsix` from the [releases page](https://github.com/kmartin26/vscode-sftp/releases/).
+2. Select Extensions (Ctrl + Shift + X).
+3. Uninstall any other sftp extension (@liximomo or @Natizyskunk): they register the same commands.
+4. Open "More Action" menu (ellipsis on the top) and click "Install from VSIX…".
+5. Locate the VSIX file and select it.
+6. Reload VS Code.
 
 ## Documentation
-- [Home](https://github.com/Natizyskunk/vscode-sftp/wiki)
-- [Settings](https://github.com/Natizyskunk/vscode-sftp/wiki/Setting)
-- [Common configuration](https://github.com/Natizyskunk/vscode-sftp/wiki/Common-Configuration)
-- [SFTP configuration](https://github.com/Natizyskunk/vscode-sftp/wiki/SFTP-only-Configuration)
-- [FTP confriguration](https://github.com/Natizyskunk/vscode-sftp/wiki/FTP(s)-only-Configuration)
-- [Commands](https://github.com/Natizyskunk/vscode-sftp/wiki/Commands)
+- [Home](docs/home.md)
+- [Settings](docs/setting.md)
+- [Common configuration](docs/common_configuration.md)
+- [SFTP configuration](docs/sftp_configuration.md)
+- [FTP configuration](docs/ftp_configuration.md)
+- [Commands](docs/commands.md)
 
 ## Usage
 If the latest files are already on a remote server, you can start with an empty local folder,
@@ -95,15 +77,14 @@ _Note：_ backslashes and other special characters must be escaped with a backsl
 8. Done - you can now edit locally and after each save it will upload to sync your remote file with the local copy.
 9. Enjoy!
 
-For detailed explanations please go to [wiki](https://github.com/Natizyskunk/vscode-sftp/wiki).
+For detailed explanations see the [documentation](docs/home.md).
 
 ## Example configurations
-You can see the full list of configuration options [here](https://github.com/Natizyskunk/vscode-sftp/wiki/configuration).
+You can see the full list of configuration options [here](docs/configuration.md).
 
 - [sftp sync extension for VS Code](#sftp-sync-extension-for-vs-code)
   - [Installation](#installation)
-    - [Method 1 (Recommended : Auto update)](#method-1-recommended--auto-update)
-    - [Method 2 (Manual update)](#method-2-manual-update)
+    - [From VSIX](#from-vsix)
   - [Documentation](#documentation)
   - [Usage](#usage)
   - [Example configurations](#example-configurations)
@@ -119,9 +100,7 @@ You can see the full list of configuration options [here](https://github.com/Nat
     - [Order](#order)
   - [Debug](#debug)
   - [FAQ](#faq)
-  - [Donation](#donation)
-    - [Buy Me a Coffee](#buy-me-a-coffee)
-    - [PayPal](#paypal)
+  - [Credits](#credits)
 
 ### Simple
 ```json
@@ -276,7 +255,7 @@ In sftp.json:
 ```
 
 ## Remote Explorer
-![remote-explorer-preview](https://raw.githubusercontent.com/Natizyskunk/vscode-sftp/master/assets/showcase/remote-explorer.png)
+![remote-explorer-preview](https://raw.githubusercontent.com/kmartin26/vscode-sftp/main/assets/showcase/remote-explorer.png)
 
 Remote Explorer lets you explore files in remote. You can open Remote Explorer by:
 
@@ -318,8 +297,6 @@ In sftp.json:
 ## FAQ
 You can see all the Frequently Asked Questions [here](./FAQ.md).
 
-## Donation
-If this project helped you reduce development time and you wish to contribute financially
-
-### Buy Me a Coffee
-[![Buy Me A Coffee](https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png)](https://www.buymeacoffee.com/Natizyskunk)
+## Credits
+- [@liximomo](https://github.com/liximomo): original author of vscode-sftp.
+- [@Natizyskunk](https://github.com/Natizyskunk) and contributors: maintained fork up to v1.16.4.
